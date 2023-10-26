@@ -7,10 +7,10 @@ const Home = () => {
         <div>
           <div className="cursor-pointer w-full">
             <div
-              className={`group flex items-center justify-center relative w-full h-[10em] rounded-xl transition duration-300 ease-in-out`}
+              className={`group flex items-center justify-center relative h-full rounded-xl transition duration-300 ease-in-out`}
             >
               <div
-                className={`absolute top-11 right-3 w-[11.1em] h-[3.9em] bg-[#157CC4] transition-transform duration-300 ease-in-out transform translate-x-[0em] group-hover:translate-x-[-11.1em] rounded-md`}
+                className={`absolute top-8 right-3 w-[11.1em] h-[3.9em] bg-[#157CC4] transition-transform duration-300 ease-in-out transform translate-x-[0em] group-hover:translate-x-[-11.1em] rounded-md`}
               ></div>
               <h1 className="text-[#157CC4] text-[4em] font-abc font-semibold text-center z-10 duration-300 ease-in-out group-hover:text-white">
                 AQUA
@@ -20,7 +20,7 @@ const Home = () => {
               </h1>
             </div>
           </div>
-          <p className="text-center mt-[-1em]">
+          <p className="text-center text-lg">
             Connecting Your Life with the Ideal Water.
           </p>
         </div>

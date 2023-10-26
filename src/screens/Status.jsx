@@ -12,7 +12,7 @@ const Status = () => {
             <ToggleButton />
           </div>
         </div>
-        <div className="flex gap-7">
+        <div className="flex gap-7 flex-wrap">
           <div className="bg-[#157CC4] w-[33em] h-[15em] rounded-xl">
             <div className="p-4">
               <h1 className="text-2xl font-semibold text-white">
