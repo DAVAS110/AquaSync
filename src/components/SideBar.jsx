@@ -71,7 +71,7 @@ const SideBar = () => {
       <div
         className={` ${
           open ? "w-72" : "w-20 "
-        } bg-[#157CC4] h-screen  p-5 pt-8 relative duration-300`}
+        } bg-[#157CC4] h-full p-5 pt-8 relative duration-300`}
       >
         <BiLeftArrowAlt
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
