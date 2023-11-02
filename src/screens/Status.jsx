@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import EatonLogo from "../assets/img/EatonLogo.png";
 
 import FullTank from "../assets/img/Tanks/FullTank.png";
@@ -12,8 +14,46 @@ import CloseValve from "../assets/img/Valves/CloseValve.png";
 
 import ToggleButton from "../components/ToggleButton";
 
+function request(URL, header) {
+  return fetch(URL, {
+    method: 'GET',
+    headers: header,
+  });
+}
+
 const Status = () => {
-  const Status = 1;
+  const DStatus = 1;
+  const [Status, setStatus] = useState(null)
+
+  //GetData
+  useEffect(() => {
+    const fetchData = async () => {
+      while (true) {
+        const url = 'https://169.254.46.42:80/api/get/data?elm=O(1)';
+        const apikey = '1e82f68d938c0f181533f5cbe9696aa9347c52d367095aac32e269c491e7b362f869736d02a08089';
+        const header = {
+          'Authorization': `Bearer ${apikey}`
+        };
+
+        const response = await request(url, header);
+
+        const jsonData = await response.json();
+
+        if (jsonData && jsonData.OPERANDS && jsonData.OPERANDS.OSINGLE && jsonData.OPERANDS.OSINGLE[0] && jsonData.OPERANDS.OSINGLE[0].V !== undefined) {
+          const vValue = jsonData.OPERANDS.OSINGLE[0].V;
+          setStatus(vValue);
+          console.log(vValue)
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  //SetData
+  
 
   return (
     <div className="m-14 mb-0">
@@ -42,7 +82,7 @@ const Status = () => {
                         Tank is full
                       </h2>
                     ) : (
-                      <h2>Tank is Empty</h2>
+                      <h2 className="text-2xl font-semibold text-white">Tank is Empty</h2>
                     )}
                   </div>
                 </div>
@@ -52,17 +92,17 @@ const Status = () => {
           <div className="bg-[#157CC4] w-[33em] h-[15em] rounded-xl">
             <div className="p-4">
               <h1 className="text-2xl font-semibold text-white">
-              Water purity Status
+                Water purity Status
               </h1>
               <div className="flex justify-end p-4 h-full w-full">
                 <div className="flex justify-center w-full h-full gap-20">
-                  {Status == 1 ? (
+                  {DStatus == 1 ? (
                     <img src={CleanWater} className="w-[4em] h-[9em]" />
                   ) : (
                     <img src={TurbidWater} className="w-[4em] h-[9em]" />
                   )}
                   <div className="mt-10">
-                    {Status == 1 ? (
+                    {DStatus == 1 ? (
                       <h2 className="text-2xl font-semibold text-white">
                         Water is Clean
                       </h2>
@@ -85,7 +125,7 @@ const Status = () => {
                 <h2 className="text-center text-[1.2em] font-semibold text-white">
                   Tank Valve
                 </h2>
-                {Status == 1 ? (
+                {DStatus == 1 ? (
                   <img src={OpenValve} className="w-[10em] h-[7em]" />
                 ) : (
                   <img src={CloseValve} className="w-[10em] h-[7em]" />
@@ -103,7 +143,7 @@ const Status = () => {
                 <h2 className="text-center text-[1.2em] font-semibold text-white">
                   Alternate Valve
                 </h2>
-                {!Status == 1 ? (
+                {!DStatus == 1 ? (
                   <img src={OpenValve} className="w-[10em] h-[7em]" />
                 ) : (
                   <img src={CloseValve} className="w-[10em] h-[7em]" />
@@ -121,7 +161,7 @@ const Status = () => {
                 <h2 className="text-center text-[1.2em] font-semibold text-white">
                   Potable Water Valve
                 </h2>
-                {Status == 1 ? (
+                {DStatus == 1 ? (
                   <img src={OpenValve} className="w-[10em] h-[7em]" />
                 ) : (
                   <img src={CloseValve} className="w-[10em] h-[7em]" />
