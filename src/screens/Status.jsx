@@ -22,10 +22,9 @@ function request(URL, header) {
 }
 
 const Status = () => {
-  const DStatus = 1;
   const [statusTank, setStatusTank] = useState(null);
   const [statusWaterPurity, setWaterPurity] = useState(null)
-
+  const [statusPLC, setStatusPLC] = useState(''); 
   //GetData
     //TankStatus
     useEffect(() => {
@@ -39,7 +38,7 @@ const Status = () => {
 
           const response = await request(url, header);
           const jsonData = await response.json();
-          
+
           if (jsonData && jsonData.OPERANDS && jsonData.OPERANDS.OSINGLE && jsonData.OPERANDS.OSINGLE[0] && jsonData.OPERANDS.OSINGLE[0].V !== undefined) {
             const vValue = jsonData.OPERANDS.OSINGLE[0].V;
             setStatusTank(vValue);
@@ -65,7 +64,7 @@ const Status = () => {
 
           const response = await request(url, header);
           const jsonData = await response.json();
-          
+
           if (jsonData && jsonData.OPERANDS && jsonData.OPERANDS.OSINGLE && jsonData.OPERANDS.OSINGLE[0] && jsonData.OPERANDS.OSINGLE[0].V !== undefined) {
             const vValue = jsonData.OPERANDS.OSINGLE[0].V;
             setWaterPurity(vValue);
@@ -79,9 +78,29 @@ const Status = () => {
       fetchData();
     }, []);
 
-  //SetData
-  
+    //Run or Stop 
+    useEffect(() => {
+      const fetchData = async () => {
+        while (true) {
+          const url = 'https://169.254.46.42:80/api/get/data?elm=STATE';
+          const apikey = '1e82f68d938c0f181533f5cbe9696aa9347c52d367095aac32e269c491e7b362f869736d02a08089';
+          const header = {
+            'Authorization': `Bearer ${apikey}`
+          };
 
+          const response = await request(url, header);
+          const jsonData = await response.json();
+          setStatusPLC(jsonData.SYSINFO.STATE)
+          
+          console.log(jsonData.SYSINFO.STATE)
+
+          await new Promise((resolve) => setTimeout(resolve, 1000));
+        }
+      };
+
+      fetchData();
+    }, []);
+  
   return (
     <div className="m-14 mb-0">
       <img className="object-cover w-40 h-30" src={EatonLogo} alt="" />
@@ -89,7 +108,10 @@ const Status = () => {
         <div className="bg-[#157CC4] w-60 h-[7em] rounded-xl">
           <div className="flex flex-col gap-4 p-4">
             <h1 className="text-2xl font-semibold text-white">PLC status</h1>
-            <ToggleButton />
+            <div className='flex items-center justify-between'>
+              {statusPLC === 'RUN' ?  <h2 className='font-semibold text-white'>RUN</h2> : <h2 className='font-semibold text-white'>STOP</h2>}
+              {statusPLC === 'RUN' ?  <div className='bg-[#00c04b] h-9 w-9 rounded-full border-4'></div> : <div className='bg-[#FF0000] h-9 w-9 rounded-full border-4'></div>}
+            </div>
           </div>
         </div>
         <div className="flex gap-7 flex-wrap">
@@ -114,7 +136,7 @@ const Status = () => {
                   </div>
                 </div>
               </div>
-         -   </div>
+              -   </div>
           </div>
           <div className="bg-[#157CC4] w-[33em] h-[15em] rounded-xl">
             <div className="p-4">

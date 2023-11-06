@@ -71,7 +71,7 @@ const SideBar = () => {
       <div
         className={` ${
           open ? "w-72" : "w-20 "
-        } bg-[#157CC4] h-full p-5 pt-8 relative duration-300`}
+        } bg-[#157CC4] h-full p-5 pt-8 relative duration-300 mb-[6em]`}
       >
         <BiLeftArrowAlt
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple
@@ -104,7 +104,7 @@ const SideBar = () => {
               className={({ isActive }) => {
                 return `
                   group flex rounded-md p-2 cursor-pointer hover:bg-[#fff] text-base items-center gap-x-2 font-abc
-                  ${Menu.gap ? "mt-[7em]" : "mt-1"}
+                  ${Menu.gap ? "mt-[9.5em]" : "mt-1"}
                   ${index === 0 && "bg-light-white"} 
                   ${isActive ? "text-[#157CC4] bg-white" : "bg-none text-white"}
                 `;
