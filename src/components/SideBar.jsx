@@ -67,11 +67,11 @@ const SideBar = () => {
   ];
 
   return (
-    <div className="flex">
+    <div className="flex bg-[#157CC4]">
       <div
         className={` ${
           open ? "w-72" : "w-20 "
-        } bg-[#157CC4] h-full p-5 pt-8 relative duration-300 mb-[6em]`}
+        } bg-[#157CC4] h-screen p-5 pt-8 relative duration-300 mb-[6em]`}
       >
         <BiLeftArrowAlt
           className={`absolute cursor-pointer -right-3 top-9 w-7 border-dark-purple

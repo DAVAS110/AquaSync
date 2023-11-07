@@ -12,8 +12,6 @@ import TurbidWater from "../assets/img/TurbidSensor/TurbidWater.png";
 import OpenValve from "../assets/img/Valves/OpenValve.png";
 import CloseValve from "../assets/img/Valves/CloseValve.png";
 
-import ToggleButton from "../components/ToggleButton";
-
 function request(URL, header) {
   return fetch(URL, {
     method: 'GET',
@@ -102,7 +100,7 @@ const Status = () => {
     }, []);
   
   return (
-    <div className="m-14 mb-0">
+    <div className="m-14 mb-1">
       <img className="object-cover w-40 h-30" src={EatonLogo} alt="" />
       <div className="flex flex-col gap-7 mt-10">
         <div className="bg-[#157CC4] w-60 h-[7em] rounded-xl">
