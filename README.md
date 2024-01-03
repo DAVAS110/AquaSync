@@ -1,4 +1,4 @@
-# Eaton Easy E4 Connector
+# Eaton Easy E4 API integration
 
 ## Descripción
 
