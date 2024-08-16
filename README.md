@@ -17,5 +17,7 @@ Eaton Website es una solución que permite la conexión del dispositivo Eaton Ea
  ![image](https://github.com/user-attachments/assets/16812890-209c-4356-990a-5af9eca5abac)
  
 ## Funcionalidad 
-  Muestra en tiempo real el estado de las entradas y salidas digitales o analogicas del PLC Eaton esta adaptado para una funcionalidad en especifica pero las bases son las   mismas (Funciona solo en entorno local)
+  Muestra en tiempo real el estado de las entradas y salidas digitales o analogicas del PLC Eaton esta adaptado para una funcionalidad en especifica pero las bases son  
+  las mismas (Funciona solo en entorno local)
+  
   ![image](https://github.com/user-attachments/assets/f8c58125-6d1e-4219-8993-49de34f61007)
