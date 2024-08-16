@@ -13,6 +13,7 @@ Eaton Website es una solución que permite la conexión del dispositivo Eaton Ea
 
 ## Cambiar API Key 
 (Para dudas consultar documentacion EASY E4 https://easye4.info/downloads/dokumentation/json_api.pdf)
+
  ![image](https://github.com/user-attachments/assets/16812890-209c-4356-990a-5af9eca5abac)
  
 ## Funcionalidad 
