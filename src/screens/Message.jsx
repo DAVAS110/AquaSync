@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import {API_EATON_PLC} from '../../config.js'
 
 function request(URL, header) {
   return fetch(URL, {
@@ -7,7 +8,6 @@ function request(URL, header) {
   });
 }
 
-
 const Message = () => {
   const [statusPLC, setStatusPLC] = useState('');
   const [notificaciones, setNotificaciones] = useState([]);
@@ -15,8 +15,8 @@ const Message = () => {
   useEffect(() => {
     const fetchData = async () => {
       while (true) {
-        const url = 'https://169.254.46.42:80/api/get/data?elm=STATE';
-        const apikey = '1e82f68d938c0f181533f5cbe9696aa9347c52d367095aac32e269c491e7b362f869736d02a08089';
+        const url = 'https://169.254.46.42:80/api/get/data?elm=STATE'; // Ruta local del PLC
+        const apikey = API_EATON_PLC;
         const header = {
           'Authorization': `Bearer ${apikey}`
         };
